@@ -1,21 +1,29 @@
-list = [2,5,3,0,2,3,0,3]
+class Node():
+    def __init__(self,data):
+        self.data = data
+        self.next = None
 
-counter = [0] * (max(list) + 1)
-# print(counter)
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
 
-for i in list:
-    counter[i] += 1
+    def add_to_beginning(self, data):
+        new_mode = Node(data)
+        new_mode.next = self.head
+        self.head = new_mode
 
-j = 0
-for i in range(len(counter)):
-    count = counter[i]
-    counter[i] += j
-    j += count
+    def display(self):
+        current = self.head
+        if not current:
+            print("This list is empty")
+            return
+        while current:
+            print(current.data, end= "->")
+            current = current.next
+        print("None")
 
-output_list = [0] * len(list)
-for x in list:
-    output_list[counter[x]] = x
-    counter[x] -= 1
-
-print(counter)
-print(output_list)
+sll = SinglyLinkedList()
+sll.add_to_beginning(5)
+sll.add_to_beginning(15)
+sll.add_to_beginning(-5)
+sll.display()
