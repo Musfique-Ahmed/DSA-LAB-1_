@@ -259,13 +259,17 @@
 # print(sq)
 # print(phone(90))
 
-def myFunc(x, hi):
-    sum = 0
-    for i in range(x):
-        sum += i
-    return f"{hi}{sum}"
-n = myFunc(6, "the number is")
-print(n)
+# hih = 10 # local variable
+
+# def myFunc(x, hi):
+#     # hih = hih + 12 # error
+#     #para += 1
+#     sum = 0
+#     for i in range(x):
+#         sum += i
+#     return f"{hi}{sum}"
+# n = myFunc(6, "the number is")
+# print(n)
 
 
 # def my_func(x):
@@ -276,3 +280,19 @@ print(n)
 
 # m = my_func(3)
 # print(m)
+# def infoCountry(country, capital):
+#     print("The capital of",country,"is",capital)
+# infoCountry("Dhaka","Bangladesh")
+
+
+# def infoCountry(country, capital):
+#     print("The capital of",country,"is",capital)
+# infoCountry(capital="Dhaka",country="Bangladesh")
+
+def infoCountry(country, capital='unknown'):
+    print("The capital of",country,"is",capital)
+infoCountry("India")
+
+def infoCountry(country, capital='unknown'): #default value : 'unknown'
+    print("The capital of",country,"is",capital)
+infoCountry("India",  "new delhi")
