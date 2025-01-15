@@ -297,17 +297,17 @@
 #     print("The capital of",country,"is",capital)
 # infoCountry("India",  "new delhi")
 
-def maximum(l): # l = [1,2,3,4,5,6,7,1,2,3,4,5]
-    maxi = l[0] # maxi = 7    1, 2, 3,
-    for i in range(1,len(l)): # range(1,12) => (1-11)
-        if l[i] > maxi: # 2>1?, 3>2? 1>7?
-            maxi = l[i]
+# def maximum(l): # l = [1,2,3,4,5,6,7,1,2,3,4,5]
+#     maxi = l[0] # maxi = 7    1, 2, 3,
+#     for i in range(1,len(l)): # range(1,12) => (1-11)
+#         if l[i] > maxi: # 2>1?, 3>2? 1>7?
+#             maxi = l[i]
 
-    return maxi
+#     return maxi
 
-maxi = maximum([1,2,3,4,5,6,7,1,2,3,4,5]) # 7
+# maxi = maximum([1,2,3,4,5,6,7,1,2,3,4,5]) # 7
 
-print("Maximum:",maxi)
+# print("Maximum:",maxi)
 
 
 l = [1,2,3,4,5,6,7,1,2,3,4,5]
