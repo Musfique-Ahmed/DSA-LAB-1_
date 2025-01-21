@@ -310,6 +310,10 @@
 # print("Maximum:",maxi)
 
 
-l = [1,2,3,4,5,6,7,1,2,3,4,5]
-for i in range(1,len(l)):
-    print(l[i])
+# l = [1,2,3,4,5,6,7,1,2,3,4,5]
+# for i in range(1,len(l)):
+#     print(l[i])
+
+
+# l = [1,2,3,4,5,6,7,1,2,3,4,5]
+# print(l[ : : -2])
