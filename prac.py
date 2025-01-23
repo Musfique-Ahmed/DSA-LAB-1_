@@ -317,3 +317,284 @@
 
 # l = [1,2,3,4,5,6,7,1,2,3,4,5]
 # print(l[ : : -2])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# A
+def find_connected_components(n, adj):
+    visited = [False] * (n + 1)
+    components = []
+
+    def dfs(node):
+        stack = [node]
+        component = []
+        while stack:
+            v = stack.pop()
+            if not visited[v]:
+                visited[v] = True
+                component.append(v)
+                for neighbor in adj[v]:
+                    if not visited[neighbor]:
+                        stack.append(neighbor)
+        return component
+
+    for i in range(1, n + 1):
+        if not visited[i]:
+            component = dfs(i)
+            components.append(component)
+
+    return components
+
+def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    n = int(data[0])
+    m = int(data[1])
+    
+    adj = [[] for _ in range(n + 1)]
+    index = 2
+    for _ in range(m):
+        a = int(data[index])
+        b = int(data[index + 1])
+        adj[a].append(b)
+        adj[b].append(a)
+        index += 2
+    
+    components = find_connected_components(n, adj)
+    
+    k = len(components) - 1
+    print(k)
+    
+    for i in range(1, len(components)):
+        print(components[i-1][0], components[i][0])
+
+if __name__ == "__main__":
+    main()
+
+
+# B
+class Node:
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+
+class List:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def addToTail(self, val):
+        """Add a number to the end of the Linked List."""
+        new_node = Node(val)
+        if not self.head:  # If the list is empty
+            self.head = self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+
+    def Print(self):
+        """Print the elements of the Linked List in normal order."""
+        current = self.head
+        while current:
+            print(current.data, end=" ")
+            current = current.next
+        print()
+
+    def PrintReverse(self):
+        """Print the elements of the Linked List in reverse order."""
+        def collect_reverse(node):
+            if not node:
+                return []
+            return collect_reverse(node.next) + [node.data]
+
+        reverse_list = collect_reverse(self.head)
+        print(" ".join(map(str, reverse_list)))
+
+
+# Input and Execution
+n = int(input())  # Number of elements
+values = list(map(int, input().split()))  # Elements of the linked list
+
+# Create a linked list and add values to it
+linked_list = List()
+for value in values:
+    linked_list.addToTail(value)
+
+# Print the list in normal and reverse order
+linked_list.Print()
+linked_list.PrintReverse()
+
+
+
+# # C
+# def main():
+#     n = int(input())  
+#     stack = []
+
+#     for _ in range(n):
+#         operation = list(map(int, input().split()))
+        
+#         if operation[0] == 1:  
+#             stack.append(operation[1])
+#         else:  
+#             if stack:
+#                 print(stack.pop())
+
+# if __name__ == "__main__":
+#     main()
+
+# # D
+# def is_valid_sequence(n, operations):
+#     stack_size = 0
+#     for op in operations:
+#         if op == 1:
+#             stack_size += 1
+#         else:  
+#             if stack_size == 0:
+#                 return False
+#             stack_size -= 1
+#     return True
+
+# def main():
+#     T = int(input())
+#     for _ in range(T):
+#         n = int(input())
+#         operations = list(map(int, input().split()))
+#         print("Valid" if is_valid_sequence(n, operations) else "Invalid")
+
+# if __name__ == "__main__":
+#     main()
+
+# # E
+# from collections import deque
+
+# def main():
+#     d = deque()
+#     n = int(input())
+    
+#     for _ in range(n):
+#         op = input().split()
+#         if len(op) == 2:
+#             x = int(op[1])
+#             if op[0] == 'insert':
+#                 d.appendleft(x)
+#             else:
+#                 try:
+#                     d.remove(x)
+#                 except ValueError:
+#                     pass
+#         else:
+#             if op[0] == 'deleteFirst':
+#                 d.popleft()
+#             else:
+#                 d.pop()
+    
+#     print(*d)
+
+# if __name__ == "__main__":
+#     main()
+
+
+# # F
+# import sys
+# from collections import deque
+
+# def main():
+#     input = sys.stdin.readline
+#     reverse = False
+#     q = deque()
+    
+#     # Operation mapping
+#     ops = {
+#         "toFront": 1,
+#         "front": 2,
+#         "back": 3,
+#         "reverse": 4,
+#         "push_back": 5
+#     }
+    
+#     for _ in range(int(input())):
+#         cmd = input().split()
+#         op = ops[cmd[0]]
+        
+#         if op == 1:  # toFront
+#             q.append(int(cmd[1])) if reverse else q.appendleft(int(cmd[1]))
+#         elif op == 2:  # front
+#             if not q:
+#                 sys.stdout.write("No job for Ada?\n")
+#             else:
+#                 sys.stdout.write(f"{q.pop() if reverse else q.popleft()}\n")
+#         elif op == 3:  # back
+#             if not q:
+#                 sys.stdout.write("No job for Ada?\n")
+#             else:
+#                 sys.stdout.write(f"{q.popleft() if reverse else q.pop()}\n")
+#         elif op == 4:  # reverse
+#             reverse = not reverse
+#         else:  # push_back
+#             q.appendleft(int(cmd[1])) if reverse else q.append(int(cmd[1]))
+
+# if __name__ == "__main__":
+#     main()
+
+
+# # H
+# from collections import deque
+
+# def process_test_cases():
+#     t = int(input())  # Number of test cases
+    
+#     for case in range(1, t + 1):
+#         n, m = map(int, input().split())  
+#         queue = deque()
+        
+#         print(f"Case {case}:")
+        
+#         for _ in range(m):
+#             command = input().strip().split()
+            
+#             if command[0] == "pushLeft":
+#                 x = int(command[1])
+#                 if len(queue) < n:
+#                     queue.appendleft(x)
+#                     print(f"Pushed in left: {x}")
+#                 else:
+#                     print("The queue is full")
+            
+#             elif command[0] == "pushRight":
+#                 x = int(command[1])
+#                 if len(queue) < n:
+#                     queue.append(x)
+#                     print(f"Pushed in right: {x}")
+#                 else:
+#                     print("The queue is full")
+            
+#             elif command[0] == "popLeft":
+#                 if queue:
+#                     print(f"Popped from left: {queue.popleft()}")
+#                 else:
+#                     print("The queue is empty")
+            
+#             elif command[0] == "popRight":
+#                 if queue:
+#                     print(f"Popped from right: {queue.pop()}")
+#                 else:
+#                     print("The queue is empty")
+
+# if __name__ == "__main__":
+#     process_test_cases()
